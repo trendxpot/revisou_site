@@ -6,6 +6,76 @@
 <title>Política de Privacidade — Revisou</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+
+<meta name="description" content="Revisou é o app de flashcards para concursos públicos. Revise matérias, memorize conteúdos e aumente suas chances de aprovação com estudos rápidos e inteligentes.">
+
+<meta name="keywords" content="concursos públicos, app para concursos, flashcards concursos, revisar concurso, revisao para concurso, estudar concurso, questões concurso, aprovação concurso, revisou">
+
+<meta name="author" content="Revisou">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="language" content="pt-BR">
+<meta name="revisit-after" content="7 days">
+<meta name="rating" content="general">
+
+<link rel="canonical" href="https://revisou.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Revisou">
+<meta property="og:title" content="Revisou — Aprenda. Revise. Passe.">
+<meta property="og:description" content="O app ideal para revisar conteúdos de concursos com rapidez e inteligência.">
+<meta property="og:url" content="https://revisou.com/">
+<meta property="og:image" content="https://revisou.com/uploads/Rev.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Revisou — Aprenda. Revise. Passe.">
+<meta name="twitter:description" content="Flashcards para concursos públicos. Revise melhor e aumente sua aprovação.">
+<meta name="twitter:image" content="https://revisou.com/uploads/Rev.png">
+
+<meta name="theme-color" content="#65A30D">
+
+<link rel="icon" type="image/png" href="uploads/favicon.ico">
+<link rel="apple-touch-icon" href="uploads/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SoftwareApplication",
+  "name":"Revisou",
+  "applicationCategory":"EducationalApplication",
+  "operatingSystem":"Android, iOS",
+  "description":"Aplicativo de flashcards para concursos públicos.",
+  "url":"https://revisou.com/",
+  "image":"https://revisou.com/uploads/Rev.png",
+  "offers":{
+    "@type":"Offer",
+    "price":"0",
+    "priceCurrency":"BRL"
+  },
+  "publisher":{
+    "@type":"Organization",
+    "name":"Revisou"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"Revisou",
+  "url":"https://revisou.com/",
+  "potentialAction":{
+    "@type":"SearchAction",
+    "target":"https://revisou.com/?q={search_term_string}",
+    "query-input":"required name=search_term_string"
+  }
+}
+</script>
+
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -44,6 +114,7 @@
     font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s;
   }
   .nav-cta:hover { background: var(--green-dark); }
+  .botão_baixar {color: white!important;}
 
   .page-header {
     padding: 140px 5vw 60px;
@@ -117,6 +188,10 @@
 </head>
 <body>
 
+<h1 style="position:absolute;left:-9999px;">
+Revisou - App de Flashcards para Concursos Públicos
+</h1>
+
 <nav>
   <a href="index.html" class="nav-logo">
     <img src="uploads/Rev.png" style="width:34px;height:34px;border-radius:9px;object-fit:cover;" alt="Revisou">
@@ -125,8 +200,7 @@
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="termos-de-uso.html">Termos de Uso</a>
-    <a href="politica-de-privacidade.html" class="active">Privacidade</a>
-    <a href="index.html#cta" class="nav-cta">Baixar agora</a>
+    <a href="index.html#cta" class="nav-cta botão_baixar">Baixar agora</a>
   </div>
 </nav>
 
@@ -240,6 +314,15 @@
   </div>
   <p>© 2026 Revisou. Todos os direitos reservados.</p>
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  document.querySelectorAll("img").forEach(img=>{
+    img.setAttribute("loading","lazy");
+    img.setAttribute("decoding","async");
+  });
+});
+</script>
 
 </body>
 </html>
