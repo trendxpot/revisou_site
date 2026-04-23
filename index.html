@@ -6,6 +6,75 @@
 <title>Revisou — Aprenda. Revise. Passe.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+
+<meta name="description" content="Revisou é o app de flashcards para concursos públicos. Revise matérias, memorize conteúdos e aumente suas chances de aprovação com estudos rápidos e inteligentes.">
+
+<meta name="keywords" content="concursos públicos, app para concursos, flashcards concursos, revisar concurso, revisao para concurso, estudar concurso, questões concurso, aprovação concurso, revisou">
+
+<meta name="author" content="Revisou">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="language" content="pt-BR">
+<meta name="revisit-after" content="7 days">
+<meta name="rating" content="general">
+
+<link rel="canonical" href="https://revisou.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Revisou">
+<meta property="og:title" content="Revisou — Aprenda. Revise. Passe.">
+<meta property="og:description" content="O app ideal para revisar conteúdos de concursos com rapidez e inteligência.">
+<meta property="og:url" content="https://revisou.com/">
+<meta property="og:image" content="https://revisou.com/uploads/Rev.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Revisou — Aprenda. Revise. Passe.">
+<meta name="twitter:description" content="Flashcards para concursos públicos. Revise melhor e aumente sua aprovação.">
+<meta name="twitter:image" content="https://revisou.com/uploads/Rev.png">
+
+<meta name="theme-color" content="#65A30D">
+
+<link rel="icon" type="image/png" href="uploads/favicon.ico">
+<link rel="apple-touch-icon" href="uploads/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SoftwareApplication",
+  "name":"Revisou",
+  "applicationCategory":"EducationalApplication",
+  "operatingSystem":"Android, iOS",
+  "description":"Aplicativo de flashcards para concursos públicos.",
+  "url":"https://revisou.com/",
+  "image":"https://revisou.com/uploads/Rev.png",
+  "offers":{
+    "@type":"Offer",
+    "price":"0",
+    "priceCurrency":"BRL"
+  },
+  "publisher":{
+    "@type":"Organization",
+    "name":"Revisou"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"Revisou",
+  "url":"https://revisou.com/",
+  "potentialAction":{
+    "@type":"SearchAction",
+    "target":"https://revisou.com/?q={search_term_string}",
+    "query-input":"required name=search_term_string"
+  }
+}
+</script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -92,6 +161,44 @@
     transition: background 0.2s, transform 0.15s;
   }
   .nav-cta:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+  .nav-menu{
+     display:flex;
+     gap:24px;
+     align-items:center;
+    }
+
+    .menu-mobile{
+     display:none;
+     background:none;
+     border:none;
+     font-size:28px;
+     cursor:pointer;
+    }
+
+    @media (max-width:768px){
+
+     .menu-mobile{
+       display:block;
+     }
+
+     .nav-menu{
+       display:none;
+       position:absolute;
+       top:68px;
+       left:0;
+       right:0;
+       background:white;
+       flex-direction:column;
+       padding:20px;
+       gap:18px;
+       border-bottom:1px solid #eee;
+     }
+
+     .nav-menu.active{
+       display:flex;
+     }
+   }
 
   /* SECTIONS */
   section { width: 100%; }
@@ -630,21 +737,25 @@
 </style>
 </head>
 <body>
+<h1 style="position:absolute;left:-9999px;">
+Revisou - App de Flashcards para Concursos Públicos
+</h1>
 
 <!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo">
-    <img src="uploads/Rev.png" style="width:34px;height:34px;border-radius:9px;object-fit:cover;" alt="Revisou">
     Revisou
   </a>
-  <div style="display:flex;align-items:center;gap:24px;">
+
+  <div class="nav-menu" id="navMenu">
     <a href="#beneficios" class="nav-link">Benefícios</a>
     <a href="#para-quem" class="nav-link">Para quem</a>
-    <!-- <a href="#planos" class="nav-link">Planos</a> -->
-    <a href="termos-de-uso.html" class="nav-link">Termos de Uso</a>
+    <a href="termos-de-uso.html" class="nav-link">Termos</a>
     <a href="politica-de-privacidade.html" class="nav-link">Privacidade</a>
-    <a href="#cta" class="nav-cta">Baixar agora</a>
+    <a href="#cta" class="nav-cta">Baixar</a>
   </div>
+
+  <button class="menu-mobile" onclick="toggleMenu()">☰</button>
 </nav>
 
 <!-- HERO -->
@@ -657,7 +768,7 @@
       <div class="hero-buttons">
         <a href="https://play.google.com/store" class="btn-primary" target="_blank">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.33.19.72.2 1.06.04L16.76 12 4.24.2C3.9.04 3.51.05 3.18.24 2.85.44 2.66.8 2.66 1.18v21.64c0 .38.19.74.52.94z"/><path d="M20.13 10.29L17.6 8.73 14.3 12l3.3 3.27 2.53-1.56a1.62 1.62 0 000-3.42z" opacity=".5"/><path d="M4.24 23.8l12.01-6.53L13.04 14l-8.8 9.8z" opacity=".7"/><path d="M13.04 10L16.25 6.73 4.24.2 13.04 10z" opacity=".7"/></svg>
-          Google Play
+          Google Play TROCAR A URL
         </a>
         <a href="#" class="btn-secondary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 8v4l3 3"/></svg>
@@ -684,7 +795,7 @@
         <div class="phone-glow"></div>
         <div class="phone">
           <div class="phone-inner">
-            <img src="uploads/Rev02.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Revisou app screenshot">
+            <img src="uploads/Rev02.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"  alt="Tela do aplicativo Revisou para concursos públicos">
           </div>
         </div>
 
@@ -1059,5 +1170,21 @@
   }, { threshold: 0.5 });
   bars.forEach(b => { const w = b.style.width; b.style.width = '0'; setTimeout(() => b.style.width = w, 300); barObs.observe(b); });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  document.querySelectorAll("img").forEach(img=>{
+    img.setAttribute("loading","lazy");
+    img.setAttribute("decoding","async");
+  });
+});
+</script>
+
+<script>
+function toggleMenu(){
+  document.getElementById("navMenu").classList.toggle("active");
+}
+</script>
+
 </body>
 </html>
