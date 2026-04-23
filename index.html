@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revisou — Aprenda. Revise. Passe.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #65A30D;
+    --green-light: #84cc16;
+    --green-dark: #4d7c0f;
+    --purple: #6b48f8;
+    --purple-dark: #4c2ec4;
+    --white: #fafaf9;
+    --gray-50: #f8f8f6;
+    --gray-100: #f0f0ed;
+    --gray-200: #e4e4e0;
+    --gray-400: #a0a09b;
+    --gray-600: #6b6b65;
+    --gray-800: #2a2a25;
+    --gray-900: #17170f;
+    --radius: 16px;
+    --font: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--white);
+    color: var(--gray-900);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .nav-link { font-size: 14px; font-weight: 500; color: var(--gray-600); text-decoration: none; transition: color 0.2s; }
+  .nav-link:hover { color: var(--gray-900); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 68px;
+    background: rgba(250,250,249,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--gray-200);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.06); }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 20px; font-weight: 800; color: var(--gray-900); text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  .nav-logo-icon {
+    width: 34px; height: 34px;
+    background: var(--purple);
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: 900; color: white; font-family: var(--font);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .nav-logo-icon::after {
+    content: '✓';
+    position: absolute; bottom: -4px; right: -5px;
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    width: 14px; height: 14px;
+    font-size: 8px;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--white);
+    font-weight: 900;
+  }
+
+  .nav-cta {
+    background: var(--green);
+    color: white;
+    border: none; cursor: pointer;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-family: var(--font);
+    font-size: 14px; font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+  /* SECTIONS */
+  section { width: 100%; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 5vw;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding-top: 68px;
+    background: linear-gradient(160deg, #f8f9ff 0%, #fafaf9 55%, #f3f7e8 100%);
+    overflow: hidden;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(107,72,248,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(101,163,13,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    min-height: calc(100vh - 68px);
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .hero-text { position: relative; z-index: 1; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(101,163,13,0.1);
+    color: var(--green-dark);
+    border-radius: 50px;
+    padding: 6px 14px;
+    font-size: 13px; font-weight: 600;
+    margin-bottom: 28px;
+    border: 1px solid rgba(101,163,13,0.2);
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--green); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -2px;
+    color: var(--gray-900);
+    margin-bottom: 20px;
+    text-wrap: pretty;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--green);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--gray-600);
+    line-height: 1.6;
+    max-width: 420px;
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+
+  .hero-buttons {
+    display: flex; gap: 14px; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--green);
+    color: white;
+    border: none; cursor: pointer;
+    padding: 16px 28px;
+    border-radius: 50px;
+    font-family: var(--font);
+    font-size: 15px; font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 8px 24px rgba(101,163,13,0.3);
+  }
+  .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(101,163,13,0.35); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: white;
+    color: var(--gray-600);
+    border: 1.5px solid var(--gray-200);
+    cursor: pointer;
+    padding: 16px 28px;
+    border-radius: 50px;
+    font-family: var(--font);
+    font-size: 15px; font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--gray-400); color: var(--gray-800); transform: translateY(-1px); }
+
+  .hero-stats {
+    display: flex; gap: 32px; margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--gray-200);
+  }
+  .stat-item { }
+  .stat-num { font-size: 26px; font-weight: 800; color: var(--gray-900); letter-spacing: -1px; }
+  .stat-label { font-size: 12px; color: var(--gray-400); font-weight: 500; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* PHONE MOCKUP */
+  .hero-visual {
+    display: flex; justify-content: center; align-items: center;
+    position: relative; z-index: 1;
+  }
+
+  .phone-wrap {
+    position: relative;
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-14px); }
+  }
+
+  .phone {
+    width: 270px;
+    background: #1a1a2e;
+    border-radius: 44px;
+    padding: 10px;
+    box-shadow:
+      0 40px 80px rgba(107,72,248,0.25),
+      0 0 0 1px rgba(255,255,255,0.1) inset,
+      0 80px 120px rgba(0,0,0,0.15);
+    position: relative;
+  }
+  .phone-inner {
+    background: #f2f1f8;
+    border-radius: 36px;
+    overflow: hidden;
+    height: 540px;
+    position: relative;
+  }
+
+  /* App screen inside phone */
+  .app-screen { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .phone-glow {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 340px; height: 540px;
+    background: radial-gradient(ellipse, rgba(107,72,248,0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Floating cards */
+  .float-card {
+    position: absolute;
+    background: white;
+    border-radius: 14px;
+    padding: 12px 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    font-size: 12px; font-weight: 600;
+    display: flex; align-items: center; gap: 8px;
+    white-space: nowrap;
+    animation: float-card 4s ease-in-out infinite;
+  }
+  .float-card.left {
+    left: -80px; top: 30%;
+    animation-delay: -1s;
+  }
+  .float-card.right {
+    right: -60px; top: 60%;
+    animation-delay: -2.5s;
+  }
+  @keyframes float-card {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .float-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+
+  /* PROBLEM */
+  .problem {
+    background: var(--gray-50);
+    padding: 100px 0;
+  }
+  .problem .container {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .section-label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--green); margin-bottom: 16px;
+  }
+  .section-h2 {
+    font-size: clamp(30px, 3.5vw, 46px);
+    font-weight: 800; letter-spacing: -1.5px; line-height: 1.1;
+    color: var(--gray-900); margin-bottom: 18px;
+    text-wrap: pretty;
+  }
+  .section-p {
+    font-size: 17px; color: var(--gray-600); line-height: 1.7; font-weight: 400;
+  }
+
+  .problem-visual {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .memory-bar {
+    background: white; border-radius: 12px; padding: 16px 20px;
+    border: 1px solid var(--gray-200);
+  }
+  .memory-bar-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .memory-bar-label { font-size: 13px; font-weight: 600; color: var(--gray-800); }
+  .memory-bar-pct { font-size: 13px; font-weight: 700; }
+  .memory-bar-track { height: 6px; background: var(--gray-100); border-radius: 99px; overflow: hidden; }
+  .memory-bar-fill { height: 100%; border-radius: 99px; transition: width 1.5s ease; }
+
+  /* SOLUTION */
+  .solution {
+    padding: 100px 0;
+    background: white;
+  }
+  .solution .container {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .solution-cards {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+  .sol-card {
+    background: var(--gray-50);
+    border-radius: 16px;
+    padding: 22px 18px;
+    border: 1px solid var(--gray-200);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .sol-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+  .sol-card-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: rgba(101,163,13,0.1);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+  }
+  .sol-card-icon svg { width: 20px; height: 20px; }
+  .sol-card-title { font-size: 14px; font-weight: 700; color: var(--gray-900); margin-bottom: 6px; }
+  .sol-card-text { font-size: 13px; color: var(--gray-600); line-height: 1.5; }
+
+  /* BENEFITS */
+  .benefits {
+    background: var(--gray-50);
+    padding: 100px 0;
+  }
+  .benefits-head {
+    text-align: center; margin-bottom: 60px;
+  }
+  .benefits-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .benefit-item {
+    background: white;
+    border-radius: 20px;
+    padding: 32px 28px;
+    border: 1px solid var(--gray-200);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .benefit-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(101,163,13,0.1);
+    border-color: rgba(101,163,13,0.3);
+  }
+  .benefit-icon {
+    width: 52px; height: 52px;
+    background: rgba(107,72,248,0.08);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .benefit-title { font-size: 17px; font-weight: 700; color: var(--gray-900); margin-bottom: 8px; }
+  .benefit-text { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
+
+  /* PLANOS */
+  .planos { padding: 100px 0; background: white; }
+  .planos-head { text-align: center; margin-bottom: 56px; }
+  .planos-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    align-items: start;
+  }
+  .plano-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 24px;
+    padding: 36px 28px;
+    display: flex; flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .plano-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.07); }
+  .plano-card.featured {
+    background: var(--purple);
+    border-color: var(--purple);
+    transform: translateY(-12px);
+    box-shadow: 0 24px 64px rgba(107,72,248,0.3);
+  }
+  .plano-card.featured:hover { transform: translateY(-16px); }
+  .plano-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--green); color: white;
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+    padding: 5px 14px; border-radius: 50px;
+    white-space: nowrap;
+  }
+  .plano-name {
+    font-size: 22px; font-weight: 800; color: var(--gray-900);
+    margin-bottom: 4px; letter-spacing: -0.5px;
+  }
+  .plano-card.featured .plano-name { color: white; }
+  .plano-desc {
+    font-size: 13px; color: var(--gray-400); margin-bottom: 24px; font-weight: 400;
+  }
+  .plano-card.featured .plano-desc { color: rgba(255,255,255,0.6); }
+  .plano-price { display: flex; align-items: baseline; gap: 2px; margin-bottom: 24px; }
+  .plano-price-val { font-size: 36px; font-weight: 800; color: var(--gray-900); letter-spacing: -1px; }
+  .plano-card.featured .plano-price-val { color: white; }
+  .plano-price-per { font-size: 14px; color: var(--gray-400); font-weight: 500; }
+  .plano-card.featured .plano-price-per { color: rgba(255,255,255,0.6); }
+  .plano-features { list-style: none; padding: 0; margin-bottom: 28px; flex: 1; }
+  .plano-features li {
+    font-size: 14px; color: var(--gray-600);
+    padding: 8px 0 8px 24px; position: relative;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .plano-features li:last-child { border-bottom: none; }
+  .plano-card.featured .plano-features li { color: rgba(255,255,255,0.8); border-bottom-color: rgba(255,255,255,0.1); }
+  .plano-features li::before {
+    position: absolute; left: 0; top: 8px;
+    font-size: 13px; font-weight: 700;
+  }
+  .plano-features li.on::before { content: '✓'; color: var(--green); }
+  .plano-features li.off::before { content: '✕'; color: var(--gray-300, #ccc); }
+  .plano-features li.off { color: var(--gray-300, #ccc); text-decoration: line-through; }
+  .plano-card.featured .plano-features li.on::before { color: #a3e635; }
+  .plano-btn {
+    display: block; text-align: center;
+    padding: 14px; border-radius: 50px;
+    font-family: var(--font); font-size: 14px; font-weight: 700;
+    text-decoration: none; transition: all 0.2s; cursor: pointer;
+  }
+  .plano-btn.outline {
+    border: 2px solid var(--gray-200); color: var(--gray-800); background: white;
+  }
+  .plano-btn.outline:hover { border-color: var(--purple); color: var(--purple); }
+  .plano-btn.filled {
+    background: white; color: var(--purple);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .plano-btn.filled:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+
+  @media (max-width: 768px) {
+    .planos-grid { grid-template-columns: 1fr; }
+    .plano-card.featured { transform: none; }
+    .plano-card.featured:hover { transform: translateY(-4px); }
+  }
+
+  /* FOR WHO */
+  .forwho {
+    padding: 100px 0;
+    background: white;
+  }
+  .forwho-head { text-align: center; margin-bottom: 56px; }
+  .forwho-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  }
+  .forwho-item {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 16px;
+    padding: 24px 22px;
+    display: flex; align-items: center; gap: 14px;
+    transition: all 0.2s;
+    cursor: default;
+  }
+  .forwho-item:hover {
+    background: white;
+    border-color: rgba(107,72,248,0.25);
+    box-shadow: 0 8px 24px rgba(107,72,248,0.08);
+    transform: translateY(-2px);
+  }
+  .forwho-dot {
+    width: 10px; height: 10px;
+    background: var(--green);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .forwho-name { font-size: 15px; font-weight: 600; color: var(--gray-900); }
+
+  /* CTA FINAL */
+  .cta-final {
+    background: var(--purple);
+    padding: 100px 0;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-final::before {
+    content: '';
+    position: absolute; top: -50%; left: -10%;
+    width: 50%; height: 200%;
+    background: rgba(255,255,255,0.03);
+    transform: skewX(-15deg);
+  }
+  .cta-final::after {
+    content: '';
+    position: absolute; bottom: -30%; right: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(101,163,13,0.15), transparent 70%);
+  }
+  .cta-final h2 {
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 800; letter-spacing: -2px; color: white;
+    margin-bottom: 16px; line-height: 1.1;
+    position: relative; z-index: 1;
+  }
+  .cta-final p {
+    font-size: 18px; color: rgba(255,255,255,0.7);
+    margin-bottom: 44px; position: relative; z-index: 1;
+  }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+  .btn-white {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: white; color: var(--purple);
+    padding: 16px 32px; border-radius: 50px;
+    font-family: var(--font); font-size: 15px; font-weight: 700;
+    text-decoration: none; transition: all 0.2s;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 16px 48px rgba(0,0,0,0.2); }
+  .btn-ghost-white {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent; color: rgba(255,255,255,0.8);
+    padding: 16px 32px; border-radius: 50px;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    font-family: var(--font); font-size: 15px; font-weight: 600;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-ghost-white:hover { border-color: rgba(255,255,255,0.6); color: white; }
+
+  .cta-note {
+    margin-top: 24px; font-size: 13px; color: rgba(255,255,255,0.45);
+    position: relative; z-index: 1;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--gray-900);
+    padding: 36px 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo {
+    display: flex; align-items: center; gap: 8px;
+    color: white; font-size: 16px; font-weight: 800; text-decoration: none;
+  }
+  .footer-logo-icon {
+    width: 28px; height: 28px; background: var(--purple); border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 900; color: white; font-family: var(--font);
+  }
+  footer p { font-size: 13px; color: var(--gray-400); }
+
+  /* TWEAKS PANEL */
+  #tweaks-panel {
+    display: none;
+    position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+    background: white; border: 1px solid var(--gray-200);
+    border-radius: 16px; padding: 20px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+    width: 260px;
+  }
+  #tweaks-panel h3 { font-size: 13px; font-weight: 700; color: var(--gray-800); margin-bottom: 16px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .tweak-row { margin-bottom: 14px; }
+  .tweak-label { font-size: 12px; font-weight: 600; color: var(--gray-600); margin-bottom: 6px; }
+  .tweak-options { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tweak-opt {
+    padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 600;
+    border: 1.5px solid var(--gray-200); cursor: pointer; background: white;
+    transition: all 0.15s; font-family: var(--font);
+  }
+  .tweak-opt.active { border-color: var(--green); background: rgba(101,163,13,0.08); color: var(--green-dark); }
+  .tweak-opt:hover:not(.active) { border-color: var(--gray-400); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero .container { grid-template-columns: 1fr; gap: 50px; text-align: center; }
+    .hero-sub { max-width: 100%; }
+    .hero-buttons { justify-content: center; }
+    .hero-stats { justify-content: center; gap: 24px; }
+    .hero-visual { order: -1; }
+    .phone { width: 220px; }
+    .phone-inner { height: 440px; }
+    .float-card.left, .float-card.right { display: none; }
+    .problem .container, .solution .container { grid-template-columns: 1fr; gap: 48px; }
+    .benefits-grid { grid-template-columns: 1fr 1fr; }
+    .forwho-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .benefits-grid { grid-template-columns: 1fr; }
+    .forwho-grid { grid-template-columns: 1fr; }
+    .solution-cards { grid-template-columns: 1fr; }
+  }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="uploads/Rev.png" style="width:34px;height:34px;border-radius:9px;object-fit:cover;" alt="Revisou">
+    Revisou
+  </a>
+  <div style="display:flex;align-items:center;gap:24px;">
+    <a href="#beneficios" class="nav-link">Benefícios</a>
+    <a href="#para-quem" class="nav-link">Para quem</a>
+    <!-- <a href="#planos" class="nav-link">Planos</a> -->
+    <a href="termos-de-uso.html" class="nav-link">Termos de Uso</a>
+    <a href="politica-de-privacidade.html" class="nav-link">Privacidade</a>
+    <a href="#cta" class="nav-cta">Baixar agora</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-text">
+      <div class="hero-badge"><span></span> Disponível na Google Play</div>
+      <h1>Aprenda.<br><em>Revise.</em><br>Passe.</h1>
+      <p class="hero-sub">O app ideal para revisar conteúdos de concursos com rapidez e inteligência.</p>
+      <div class="hero-buttons">
+        <a href="https://play.google.com/store" class="btn-primary" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.33.19.72.2 1.06.04L16.76 12 4.24.2C3.9.04 3.51.05 3.18.24 2.85.44 2.66.8 2.66 1.18v21.64c0 .38.19.74.52.94z"/><path d="M20.13 10.29L17.6 8.73 14.3 12l3.3 3.27 2.53-1.56a1.62 1.62 0 000-3.42z" opacity=".5"/><path d="M4.24 23.8l12.01-6.53L13.04 14l-8.8 9.8z" opacity=".7"/><path d="M13.04 10L16.25 6.73 4.24.2 13.04 10z" opacity=".7"/></svg>
+          Google Play
+        </a>
+        <a href="#" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 8v4l3 3"/></svg>
+          Apple — Em breve
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">8.800+</div>
+          <div class="stat-label">Flashcards</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">15+</div>
+          <div class="stat-label">Matérias</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">Grátis</div>
+          <div class="stat-label">Para baixar</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="phone-wrap">
+        <div class="phone-glow"></div>
+        <div class="phone">
+          <div class="phone-inner">
+            <img src="uploads/Rev02.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Revisou app screenshot">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">O Problema</div>
+      <h2 class="section-h2">Você estuda...<br>e esquece depois?</h2>
+      <p class="section-p">Sem revisão constante, o conteúdo desaparece da memória em dias. Estudar muito sem revisar é tempo perdido.</p>
+    </div>
+    <div class="problem-visual reveal">
+      <div style="margin-bottom:8px;font-size:13px;font-weight:700;color:#6b6b65;">Retenção sem revisão</div>
+      <div class="memory-bar">
+        <div class="memory-bar-header">
+          <span class="memory-bar-label">Após 1 dia</span>
+          <span class="memory-bar-pct" style="color:#ef4444;">50%</span>
+        </div>
+        <div class="memory-bar-track"><div class="memory-bar-fill" style="width:50%;background:#fca5a5;"></div></div>
+      </div>
+      <div class="memory-bar">
+        <div class="memory-bar-header">
+          <span class="memory-bar-label">Após 1 semana</span>
+          <span class="memory-bar-pct" style="color:#f97316;">30%</span>
+        </div>
+        <div class="memory-bar-track"><div class="memory-bar-fill" style="width:30%;background:#fdba74;"></div></div>
+      </div>
+      <div class="memory-bar">
+        <div class="memory-bar-header">
+          <span class="memory-bar-label">Após 1 mês</span>
+          <span class="memory-bar-pct" style="color:#dc2626;">10%</span>
+        </div>
+        <div class="memory-bar-track"><div class="memory-bar-fill" style="width:10%;background:#fca5a5;"></div></div>
+      </div>
+      <div style="margin-top:20px;padding:16px 18px;background:rgba(101,163,13,0.07);border-radius:12px;border:1px solid rgba(101,163,13,0.2);">
+        <div style="font-size:13px;font-weight:700;color:#4d7c0f;margin-bottom:4px;">Com Revisou:</div>
+        <div style="font-size:13px;color:#6b6b65;">Revisão constante → conteúdo vivo até a prova.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution">
+  <div class="container">
+    <div class="solution-cards reveal">
+      <div class="sol-card">
+        <div class="sol-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#65A30D" stroke-width="2"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M9 21h6"/><path d="M12 17v4"/></svg>
+        </div>
+        <div class="sol-card-title">Flashcards rápidos</div>
+        <div class="sol-card-text">Estude em 5 minutos por dia com cards objetivos.</div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#65A30D" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="sol-card-title">Qualquer momento</div>
+        <div class="sol-card-text">No ônibus, na fila, no intervalo. Aproveite todo tempo.</div>
+      </div>
+      <div class="sol-card" style="grid-column: span 2;">
+        <div class="sol-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#65A30D" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="sol-card-title">Conteúdo direto ao ponto</div>
+        <div class="sol-card-text">8.800+ flashcards focados nas matérias que mais caem nos concursos. Sem enrolação.</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="section-label">A Solução</div>
+      <h2 class="section-h2">O Revisou<br>resolve isso.</h2>
+      <p class="section-p">Flashcards rápidos para manter o conteúdo vivo até a prova. <em style="font-style:normal;font-weight:600;color:var(--gray-900)">Quem revisa, sai na frente.</em></p>
+      <a href="https://play.google.com/store" class="btn-primary" style="margin-top:32px;display:inline-flex;" target="_blank">
+        Baixar grátis
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits" id="beneficios">
+  <div class="benefits-head reveal">
+    <div class="section-label" style="display:block;">Por que funciona</div>
+    <h2 class="section-h2">Feito para você passar.</h2>
+  </div>
+  <div class="container">
+    <div class="benefits-grid">
+      <div class="benefit-item reveal">
+        <div class="benefit-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6b48f8" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="benefit-title">Revisão rápida</div>
+        <div class="benefit-text">5 a 10 minutos por dia já fazem diferença. Sem precisar de horas de estudo.</div>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6b48f8" stroke-width="2"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 9h18M9 21h6M12 17v4"/></svg>
+        </div>
+        <div class="benefit-title">Flashcards inteligentes</div>
+        <div class="benefit-text">Cards diretos com a informação que realmente cai na prova.</div>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6b48f8" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="benefit-title">Estude em qualquer lugar</div>
+        <div class="benefit-text">Mobile-first. Funciona no celular onde quer que você esteja.</div>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6b48f8" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        </div>
+        <div class="benefit-title">Melhor memorização</div>
+        <div class="benefit-text">Revisão repetida fixa o conteúdo de verdade na memória de longo prazo.</div>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6b48f8" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="benefit-title">Mais constância</div>
+        <div class="benefit-text">Sequências diárias e acompanhamento de progresso te mantêm motivado.</div>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6b48f8" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="benefit-title">Evolução diária</div>
+        <div class="benefit-text">Acompanhe sua performance e veja sua evolução rumo à aprovação.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="forwho" id="para-quem">
+  <div class="forwho-head reveal">
+    <div class="section-label" style="display:block;">Para quem é</div>
+    <h2 class="section-h2">Feito para concursos.</h2>
+    <p class="section-p" style="max-width:480px;margin:0 auto;">De tribunais a polícia, bancos a fiscais. O Revisou tem o conteúdo do seu concurso.</p>
+  </div>
+  <div class="container">
+    <div class="forwho-grid reveal">
+      <div class="forwho-item">
+        <div class="forwho-dot"></div>
+        <div>
+          <div class="forwho-name">Tribunais</div>
+          <div style="font-size:12px;color:var(--gray-400);margin-top:2px;">TJ, TRF, TST e mais</div>
+        </div>
+      </div>
+      <div class="forwho-item">
+        <div class="forwho-dot"></div>
+        <div>
+          <div class="forwho-name">Polícia</div>
+          <div style="font-size:12px;color:var(--gray-400);margin-top:2px;">PF, PC, PM</div>
+        </div>
+      </div>
+      <div class="forwho-item">
+        <div class="forwho-dot"></div>
+        <div>
+          <div class="forwho-name">INSS</div>
+          <div style="font-size:12px;color:var(--gray-400);margin-top:2px;">Previdência e Seguridade</div>
+        </div>
+      </div>
+      <div class="forwho-item">
+        <div class="forwho-dot"></div>
+        <div>
+          <div class="forwho-name">Bancos</div>
+          <div style="font-size:12px;color:var(--gray-400);margin-top:2px;">Banco do Brasil, CEF, BCB</div>
+        </div>
+      </div>
+      <div class="forwho-item">
+        <div class="forwho-dot"></div>
+        <div>
+          <div class="forwho-name">Fiscais</div>
+          <div style="font-size:12px;color:var(--gray-400);margin-top:2px;">Receita Federal, Auditores</div>
+        </div>
+      </div>
+      <div class="forwho-item">
+        <div class="forwho-dot"></div>
+        <div>
+          <div class="forwho-name">Concursos em geral</div>
+          <div style="font-size:12px;color:var(--gray-400);margin-top:2px;">Qualquer edital nacional</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS (oculto por padrão) -->
+<section class="planos" id="planos" style="display: none;">
+  <div class="container">
+    <div class="planos-head reveal">
+      <div class="section-label" style="display:block;">Planos</div>
+      <h2 class="section-h2">Simples e transparente.</h2>
+      <p class="section-p" style="max-width:480px;margin:0 auto;">Escolha o plano ideal para sua aprovação.</p>
+    </div>
+    <div class="planos-grid reveal">
+
+      <!-- Grátis -->
+      <div class="plano-card">
+        <div class="plano-name">Grátis</div>
+        <div class="plano-desc">Para começar a revisar</div>
+        <div class="plano-price"><span class="plano-price-val">R$0</span><span class="plano-price-per">/mês</span></div>
+        <ul class="plano-features">
+          <li class="on">Acesso a flashcards básicos</li>
+          <li class="on">Filtro por matéria</li>
+          <li class="off">Favoritos ilimitados</li>
+          <li class="off">Progresso detalhado</li>
+          <li class="off">Todos os concursos</li>
+        </ul>
+        <a href="https://play.google.com/store" class="plano-btn outline" target="_blank">Baixar grátis</a>
+      </div>
+
+      <!-- Pro (destaque) -->
+      <div class="plano-card featured">
+        <div class="plano-badge">Mais popular</div>
+        <div class="plano-name">Pro</div>
+        <div class="plano-desc">Para quem leva a sério</div>
+        <div class="plano-price"><span class="plano-price-val">R$14,90</span><span class="plano-price-per">/mês</span></div>
+        <ul class="plano-features">
+          <li class="on">Todos os flashcards</li>
+          <li class="on">Filtro por matéria e tópico</li>
+          <li class="on">Favoritos ilimitados</li>
+          <li class="on">Progresso detalhado</li>
+          <li class="off">Todos os concursos</li>
+        </ul>
+        <a href="https://play.google.com/store" class="plano-btn filled" target="_blank">Assinar agora</a>
+      </div>
+
+      <!-- Anual -->
+      <div class="plano-card">
+        <div class="plano-name">Anual</div>
+        <div class="plano-desc">Melhor custo-benefício</div>
+        <div class="plano-price"><span class="plano-price-val">R$9,90</span><span class="plano-price-per">/mês</span></div>
+        <div style="font-size:12px;color:var(--green-dark);font-weight:600;margin-top:-10px;margin-bottom:16px;">Cobrado R$118,80/ano</div>
+        <ul class="plano-features">
+          <li class="on">Todos os flashcards</li>
+          <li class="on">Filtro por matéria e tópico</li>
+          <li class="on">Favoritos ilimitados</li>
+          <li class="on">Progresso detalhado</li>
+          <li class="on">Todos os concursos</li>
+        </ul>
+        <a href="https://play.google.com/store" class="plano-btn outline" target="_blank">Assinar anual</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="cta">
+  <div class="container">
+    <h2 class="reveal">Comece hoje<br>sua aprovação.</h2>
+    <p class="reveal">Transforme minutos em aprovação. Estude menos. Lembre mais.</p>
+    <div class="cta-buttons reveal">
+      <a href="https://play.google.com/store" class="btn-white" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.33.19.72.2 1.06.04L16.76 12 4.24.2C3.9.04 3.51.05 3.18.24 2.85.44 2.66.8 2.66 1.18v21.64c0 .38.19.74.52.94z"/></svg>
+        Baixar na Google Play
+      </a>
+      <a href="#" class="btn-ghost-white">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 8v4l3 3"/></svg>
+        Apple Store — Em breve
+      </a>
+    </div>
+    <div class="cta-note reveal">Google Play disponível agora • Apple Store em breve</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">
+    <img src="uploads/Rev.png" style="width:28px;height:28px;border-radius:7px;object-fit:cover;" alt="Revisou">
+    Revisou
+  </a>
+  <div style="display:flex;gap:20px;">
+    <a href="termos-de-uso.html" style="font-size:13px;color:var(--gray-400);text-decoration:none;">Termos de Uso</a>
+    <a href="politica-de-privacidade.html" style="font-size:13px;color:var(--gray-400);text-decoration:none;">Privacidade</a>
+  </div>
+  <p>© 2026 Revisou. Todos os direitos reservados.</p>
+</footer>
+
+<!-- TWEAKS PANEL -->
+<div id="tweaks-panel">
+  <h3>Tweaks</h3>
+  <div class="tweak-row">
+    <div class="tweak-label">Cor de destaque</div>
+    <div class="tweak-options">
+      <button class="tweak-opt active" data-color="#65A30D" onclick="setAccent('#65A30D','#4d7c0f',this)">Verde</button>
+      <button class="tweak-opt" data-color="#0ea5e9" onclick="setAccent('#0ea5e9','#0284c7',this)">Azul</button>
+      <button class="tweak-opt" data-color="#f59e0b" onclick="setAccent('#f59e0b','#d97706',this)">Âmbar</button>
+    </div>
+  </div>
+  <div class="tweak-row">
+    <div class="tweak-label">Estilo do hero</div>
+    <div class="tweak-options">
+      <button class="tweak-opt active" onclick="setHeroStyle('gradient',this)">Gradiente</button>
+      <button class="tweak-opt" onclick="setHeroStyle('white',this)">Branco</button>
+      <button class="tweak-opt" onclick="setHeroStyle('dark',this)">Escuro</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Scroll effects
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => obs.observe(el));
+
+  // Tweaks
+  window.addEventListener('message', e => {
+    if (e.data?.type === '__activate_edit_mode') document.getElementById('tweaks-panel').style.display = 'block';
+    if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweaks-panel').style.display = 'none';
+  });
+  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+
+  function setAccent(color, dark, btn) {
+    document.documentElement.style.setProperty('--green', color);
+    document.documentElement.style.setProperty('--green-dark', dark);
+    document.querySelectorAll('.tweak-options')[0].querySelectorAll('.tweak-opt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { accent: color } }, '*');
+  }
+
+  function setHeroStyle(style, btn) {
+    const hero = document.querySelector('.hero');
+    const heroText = document.querySelector('.hero-text');
+    // Reset all inline colors first
+    heroText.querySelectorAll('*').forEach(el => el.style.color = '');
+    if (style === 'gradient') {
+      hero.style.background = 'linear-gradient(160deg, #f8f9ff 0%, #fafaf9 55%, #f3f7e8 100%)';
+    } else if (style === 'white') {
+      hero.style.background = '#ffffff';
+    } else {
+      hero.style.background = 'linear-gradient(160deg, #0f0f1a 0%, #1a1a2e 100%)';
+      heroText.querySelector('h1').style.color = 'white';
+      heroText.querySelector('.hero-sub').style.color = 'rgba(255,255,255,0.65)';
+      heroText.querySelectorAll('.stat-num').forEach(el => el.style.color = 'white');
+      heroText.querySelectorAll('.stat-label').forEach(el => el.style.color = 'rgba(255,255,255,0.5)');
+    }
+    document.querySelectorAll('.tweak-options')[1].querySelectorAll('.tweak-opt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // Animate memory bars on scroll
+  const bars = document.querySelectorAll('.memory-bar-fill');
+  const barObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.width = e.target.style.width;
+        barObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  bars.forEach(b => { const w = b.style.width; b.style.width = '0'; setTimeout(() => b.style.width = w, 300); barObs.observe(b); });
+</script>
+</body>
+</html>

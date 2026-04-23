@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidade — Revisou</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #65A30D; --green-dark: #4d7c0f;
+    --purple: #6b48f8;
+    --white: #fafaf9; --gray-50: #f8f8f6; --gray-100: #f0f0ed;
+    --gray-200: #e4e4e0; --gray-400: #a0a09b; --gray-600: #6b6b65;
+    --gray-800: #2a2a25; --gray-900: #17170f;
+    --font: 'DM Sans', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font); background: var(--white); color: var(--gray-900); -webkit-font-smoothing: antialiased; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw; height: 68px;
+    background: rgba(250,250,249,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 20px; font-weight: 800; color: var(--gray-900); text-decoration: none;
+  }
+  .nav-links { display: flex; align-items: center; gap: 24px; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--gray-600); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gray-900); }
+  .nav-links a.active { color: var(--green-dark); font-weight: 600; }
+  .nav-cta {
+    background: var(--green); color: white; border: none; cursor: pointer;
+    padding: 10px 22px; border-radius: 50px; font-family: var(--font);
+    font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--green-dark); }
+
+  .page-header {
+    padding: 140px 5vw 60px;
+    background: linear-gradient(160deg, #f8f9ff 0%, #fafaf9 100%);
+    border-bottom: 1px solid var(--gray-200);
+    text-align: center;
+  }
+  .page-header .label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--green); margin-bottom: 14px;
+  }
+  .page-header h1 {
+    font-size: clamp(32px, 4vw, 52px); font-weight: 800;
+    letter-spacing: -1.5px; color: var(--gray-900); margin-bottom: 12px;
+  }
+  .page-header p { font-size: 16px; color: var(--gray-400); }
+
+  .content {
+    max-width: 760px; margin: 0 auto;
+    padding: 72px 5vw 100px;
+  }
+
+  .section { margin-bottom: 48px; }
+  .section h2 {
+    font-size: 20px; font-weight: 700; color: var(--gray-900);
+    margin-bottom: 16px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .section p {
+    font-size: 15px; color: var(--gray-600); line-height: 1.8;
+    margin-bottom: 12px;
+  }
+  .section ul { list-style: none; padding: 0; }
+  .section ul li {
+    font-size: 15px; color: var(--gray-600); line-height: 1.8;
+    padding: 6px 0 6px 20px; position: relative;
+  }
+  .section ul li::before {
+    content: ''; position: absolute; left: 0; top: 14px;
+    width: 6px; height: 6px; background: var(--green); border-radius: 50%;
+  }
+
+  .highlight-box {
+    background: rgba(101,163,13,0.06);
+    border: 1px solid rgba(101,163,13,0.2);
+    border-radius: 12px; padding: 20px 24px;
+    margin-bottom: 48px;
+  }
+  .highlight-box p { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin: 0; }
+  .highlight-box strong { color: var(--green-dark); }
+
+  .updated {
+    display: inline-block;
+    font-size: 13px; color: var(--gray-400);
+    background: var(--gray-100); border-radius: 8px;
+    padding: 6px 12px; margin-bottom: 48px;
+  }
+
+  footer {
+    background: var(--gray-900);
+    padding: 36px 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 16px; font-weight: 800; text-decoration: none; }
+  footer p { font-size: 13px; color: var(--gray-400); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: var(--gray-400); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: white; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="uploads/Rev.png" style="width:34px;height:34px;border-radius:9px;object-fit:cover;" alt="Revisou">
+    Revisou
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="termos-de-uso.html">Termos de Uso</a>
+    <a href="politica-de-privacidade.html" class="active">Privacidade</a>
+    <a href="index.html#cta" class="nav-cta">Baixar agora</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="label">Legal</div>
+  <h1>Política de Privacidade</h1>
+  <p>Última atualização: abril de 2026</p>
+</div>
+
+<div class="content">
+
+  <div class="updated">Vigente a partir de 22 de abril de 2026</div>
+
+  <div class="section">
+    <p>O Revisou respeita a privacidade dos usuários e realiza o tratamento de dados pessoais em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 – LGPD).</p>
+  </div>
+
+  <div class="section">
+    <h2>1. Dados Coletados</h2>
+    <p>Podemos coletar as seguintes informações:</p>
+
+    <p><strong>Dados fornecidos pelo usuário</strong></p>
+    <ul>
+      <li>Nome ou apelido</li>
+      <li>Endereço de e-mail</li>
+      <li>Credenciais de acesso</li>
+    </ul>
+
+    <p><strong>Dados de uso</strong></p>
+    <ul>
+      <li>Progresso de estudo</li>
+      <li>Interações com flashcards</li>
+      <li>Resultados de quizzes</li>
+      <li>Preferências de estudo</li>
+    </ul>
+
+    <p><strong>Dados técnicos</strong></p>
+    <ul>
+      <li>Endereço IP</li>
+      <li>Tipo de dispositivo</li>
+      <li>Sistema operacional</li>
+      <li>Versão do aplicativo</li>
+      <li>Registros de acesso</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>2. Finalidade do Uso dos Dados</h2>
+    <p>Os dados coletados são utilizados para:</p>
+    <ul>
+      <li>Permitir autenticação de usuários</li>
+      <li>Operar a plataforma</li>
+      <li>Registrar progresso de estudo</li>
+      <li>Melhorar funcionalidades</li>
+      <li>Garantir segurança da plataforma</li>
+      <li>Prevenir abusos ou fraudes</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>3. Compartilhamento de Dados</h2>
+    <p>O Revisou não vende dados pessoais. Os dados poderão ser compartilhados apenas quando necessário para:</p>
+    <ul>
+      <li>Operação da infraestrutura tecnológica</li>
+      <li>Cumprimento de obrigações legais</li>
+      <li>Atendimento a ordens judiciais</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>4. Armazenamento e Segurança</h2>
+    <p>O Revisou utiliza medidas técnicas e organizacionais para proteger os dados dos usuários. Apesar disso, nenhum sistema é completamente imune a riscos.</p>
+  </div>
+
+  <div class="section">
+    <h2>5. Retenção de Dados</h2>
+    <p>Os dados serão armazenados pelo tempo necessário para:</p>
+    <ul>
+      <li>Funcionamento da plataforma</li>
+      <li>Manutenção da conta do usuário</li>
+      <li>Cumprimento de obrigações legais</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>6. Direitos do Usuário</h2>
+    <p>Nos termos da LGPD, o usuário pode solicitar:</p>
+    <ul>
+      <li>Acesso aos dados pessoais</li>
+      <li>Correção de dados</li>
+      <li>Exclusão de dados</li>
+      <li>Portabilidade de dados</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>7. Alterações nesta Política</h2>
+    <p>Esta política poderá ser atualizada periodicamente. A versão mais recente estará sempre disponível na plataforma.</p>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">
+    <img src="uploads/Rev.png" style="width:28px;height:28px;border-radius:7px;object-fit:cover;" alt="Revisou">
+    Revisou
+  </a>
+  <div class="footer-links">
+    <a href="termos-de-uso.html">Termos de Uso</a>
+    <a href="politica-de-privacidade.html">Privacidade</a>
+  </div>
+  <p>© 2026 Revisou. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
