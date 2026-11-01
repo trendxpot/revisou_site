@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Baixar o Revisou</title>
+<meta name="description" content="Baixe o Revisou na App Store (iPhone) ou no Google Play (Android).">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#6E5CEC">
+<link rel="canonical" href="https://revisou.com/baixar.html">
+<link rel="icon" href="uploads/favicon.ico">
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:#fff;color:#202124;-webkit-font-smoothing:antialiased}
+main{width:min(420px,100%);text-align:center}
+img{height:48px;width:auto;margin-bottom:24px}
+h1{margin:0 0 8px;font-size:24px;line-height:1.25}
+p{margin:0 0 24px;color:#5f6672;font-size:15px;line-height:1.5}
+a.btn{display:block;margin:0 0 12px;padding:15px 20px;border-radius:12px;font-size:16px;font-weight:600;text-decoration:none;border:1px solid #d9dcf5;color:#202124;background:#fff}
+a.btn.primary{background:#6E5CEC;border-color:#6E5CEC;color:#fff}
+a.btn:focus-visible{outline:3px solid #202124;outline-offset:2px}
+small{display:block;margin-top:20px;color:#5f6672;font-size:13px}
+small a{color:#5a49d6;text-decoration:underline}
+</style>
+</head>
+<body>
+<main>
+<img src="uploads/logo.png" alt="Revisou">
+<h1 id="titulo">Baixe o Revisou</h1>
+<p id="msg">Escolha a loja do seu celular.</p>
+<a class="btn primary" id="ios" href="https://apps.apple.com/br/app/revisou/id6826603370" rel="noopener">Baixar na App Store (iPhone)</a>
+<a class="btn" id="android" href="https://play.google.com/store/apps/details?id=com.wz.revisou" rel="noopener">Baixar no Google Play (Android)</a>
+<small><a href="index.html">Conhecer o Revisou</a></small>
+</main>
+<script>
+(function () {
+  var ua = navigator.userAgent || '';
+  var ipadosComoMac = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+  var destino = null;
+  if (/iPhone|iPad|iPod/.test(ua) || ipadosComoMac) destino = 'ios';
+  else if (/Android/.test(ua)) destino = 'android';
+  if (!destino) return;
+  var link = document.getElementById(destino);
+  document.getElementById('titulo').textContent = 'Abrindo a loja…';
+  document.getElementById('msg').textContent = 'Se nada acontecer, toque no botão abaixo.';
+  document.getElementById(destino === 'ios' ? 'android' : 'ios').style.display = 'none';
+  link.className = 'btn primary';
+  location.replace(link.href);
+})();
+</script>
+</body>
+</html>
