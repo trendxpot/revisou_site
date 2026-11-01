@@ -34,27 +34,6 @@ small a{color:#5a49d6;text-decoration:underline}
 </main>
 <script>
 (function () {
-  // Token do provedor da App Store (App Store Connect > Análises do app > Campanhas).
-  // Vazio: o link da App Store segue sem rastreio de campanha.
-  var APPLE_PT = '';
-
-  var q = new URLSearchParams(location.search);
-  var chaves = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
-  var utm = [];
-  chaves.forEach(function (k) {
-    var v = (q.get(k) || '').slice(0, 100);
-    if (v) utm.push(k + '=' + encodeURIComponent(v));
-  });
-  var elIos = document.getElementById('ios');
-  var elAndroid = document.getElementById('android');
-  if (utm.length) {
-    elAndroid.href += '&referrer=' + encodeURIComponent(utm.join('&'));
-    var campanha = (q.get('utm_campaign') || '').slice(0, 40);
-    if (APPLE_PT && campanha) {
-      elIos.href += '?pt=' + encodeURIComponent(APPLE_PT) + '&ct=' + encodeURIComponent(campanha);
-    }
-  }
-
   var ua = navigator.userAgent || '';
   var ipadosComoMac = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
   var destino = null;
